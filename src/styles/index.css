@@ -47,8 +47,12 @@ i {
     color: rgb(21, 128, 117);
     background-color: rgb(148, 203, 197);
     margin-left: 20px;
+    
 }
 
+i:hover {
+    color: rgb(30, 184, 168);
+ }
 h1 {
     text-align: center;
 }

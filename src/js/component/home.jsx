@@ -25,7 +25,6 @@ const Home = () => {
 					body: JSON.stringify([...allTasks, task]),
 				});
 				if (response.ok) {
-					getAllTasks();
 					setTask(initialState);
 				} else {
 					console.log("La tarea no se ha agregado");
@@ -128,7 +127,15 @@ const Home = () => {
 	const handleDeleteTask = (index) => {
 		const delTask = allTasks.filter(task => task.label != allTasks[index].label)
 		setAllTasks(delTask)
+		fetch(`${URLBASE}/${USERBASE}`, {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(allTasks),
+		}).then(resp => resp.json()).then(data => console.log(data)).catch(error => console.log(error))
 	}
+
+
+
 
 
 	return (
@@ -153,7 +160,7 @@ const Home = () => {
 					{
 						allTasks.length == 0
 							?
-							<p className="ps-2 text-danger">Create a user and start adding tasks!</p>
+							<p className="ps-2 text-danger">Start adding tasks!</p>
 							:
 							allTasks.map((item, index) => {
 								return (
