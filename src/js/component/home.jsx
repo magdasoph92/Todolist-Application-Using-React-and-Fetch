@@ -130,7 +130,7 @@ const Home = () => {
 		fetch(`${URLBASE}/${USERBASE}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(allTasks),
+			body: JSON.stringify(delTask),
 		}).then(resp => resp.json()).then(data => console.log(data)).catch(error => console.log(error))
 	}
 
